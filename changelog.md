@@ -5,6 +5,9 @@
 - Gabriel Yip
 
 ## [Unreleased]
+## [V4.0.0] - 2017-11-30 (MA)
+- Added rest to Tasks model
+
 ## [V3.0.3] - 2017-11-17 (GY)
 ### Added
 - Added store method to XML_Model
