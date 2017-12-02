@@ -57,9 +57,15 @@ class Tasks extends XML_Model
     {
         $this->rest->initialize(array('server' => REST_SERVER));
         $this->rest->option(CURLOPT_PORT, REST_PORT);
-        $this->_data =  $this->rest->get('/job');
+        $this->_data =  $this->rest->get('job');
 
+
+        //var_dump($this->_data);
+        // rebuild the field names from the first object
+        $one = array_values((array) $this->_data);
+        $this->_fields = array_keys((array)$one[0]);
         // rebuild the keys table
+        //var_dump($this->_fields);
         $this->reindex();
     }
 
@@ -73,7 +79,7 @@ class Tasks extends XML_Model
     {
         $this->rest->initialize(array('server' => REST_SERVER));
         $this->rest->option(CURLOPT_PORT, REST_PORT);
-        return $this->rest->get('/job/' . $key);
+        return $this->rest->get('job/' . $key);
     }
 
     // Delete a record from the DB
@@ -81,7 +87,7 @@ class Tasks extends XML_Model
     {
         $this->rest->initialize(array('server' => REST_SERVER));
         $this->rest->option(CURLOPT_PORT, REST_PORT);
-        $this->rest->delete('/job/' . $key);
+        $this->rest->delete('job/' . $key);
         $this->load(); // because the "database" might have changed
     }
 
@@ -91,7 +97,7 @@ class Tasks extends XML_Model
         $this->rest->initialize(array('server' => REST_SERVER));
         $this->rest->option(CURLOPT_PORT, REST_PORT);
         $key = $record->{$this->_keyfield};
-        $retrieved = $this->rest->put('/job/' . $key, $record);
+        $retrieved = $this->rest->put('job/' . $key, $record);
         $this->load(); // because the "database" might have changed
     }
 
@@ -101,7 +107,7 @@ class Tasks extends XML_Model
         $this->rest->initialize(array('server' => REST_SERVER));
         $this->rest->option(CURLOPT_PORT, REST_PORT);
         $key = $record->{$this->_keyfield};
-        $retrieved = $this->rest->post('/job/' . $key, $record);
+        $retrieved = $this->rest->post('job/' . $key, $record);
         $this->load(); // because the "database" might have changed
     }
 }
