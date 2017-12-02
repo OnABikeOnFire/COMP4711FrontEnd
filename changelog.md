@@ -5,7 +5,12 @@
 - Gabriel Yip
 
 ## [Unreleased]
+## [V4.0.1] - 2017-12-2 (MA)
+## Updated
+- Fixed add and delete to Tasks model
+
 ## [V4.0.0] - 2017-11-30 (MA)
+## Added
 - Added rest to Tasks model
 
 ## [V3.0.3] - 2017-11-17 (GY)
